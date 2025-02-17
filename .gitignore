@@ -1,0 +1,40 @@
+# Общие файлы, которые не должны попадать в репозиторий
+
+# Временные файлы сборки
+bin/
+obj/
+out/
+
+# Настройки VS Code
+.vscode/
+
+# Файлы зависимостей
+*.log
+*.user
+*.suo
+*.pdb
+*.cache
+*.db
+*.pid
+*.seed
+*.nupkg
+*.nuspec
+
+# Кэш NuGet
+packages/
+project.lock.json
+project.assets.json
+
+# Файлы сборки .NET
+*.dll
+*.exe
+
+# Конфигурационные файлы Rider и Visual Studio
+.idea/
+.vs/
+
+# Файлы тестов и покрытий
+TestResults/
+*.coverage
+*.coveragexml
+*.testlog
