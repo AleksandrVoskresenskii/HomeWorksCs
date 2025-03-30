@@ -12,12 +12,10 @@ public class Trie
     }
 
     private readonly Node _root = new();
-    private int _size;
-
     /// <summary>
     /// Gets the number of unique elements stored in the trie.
     /// </summary>
-    public int Size => _size;
+    public int Size { get; private set; }
 
     /// <summary>
     /// Adds a string to the trie.
