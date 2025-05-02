@@ -1,4 +1,14 @@
-﻿namespace ControlWork1_1;
+﻿// MIT License
+// 
+// Copyright (c) 2025 AleksandrVoskresenskii
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction...
+// 
+// Full license text is available in the LICENSE file.
+
+namespace ControlWork1_1;
 
 /// <summary>
 /// Главная форма приложения с одной «бегающей» кнопкой.
