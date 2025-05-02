@@ -1,14 +1,8 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
-
-namespace ControlWork1_1;
+﻿namespace ControlWork1_1;
 
 /// <summary>
 /// Главная форма приложения с одной «бегающей» кнопкой.
-/// Кнопка ускользает от курсора мыши, если тот приближается ближе
-/// заданного радиуса (<see cref="TriggerDistancePx"/>);
+/// Кнопка ускользает от курсора при наведении на неё.
 /// По клику завершает работу приложения.
 /// </summary>
 public partial class Form1 : Form
@@ -20,21 +14,15 @@ public partial class Form1 : Form
     private readonly Random rand = new();
 
     /// <summary>
-    /// Внутренний отступ (в пикселях) между кнопкой и границами
+    /// Внутренний отступ (в пикселях) между кнопкой и границами
     /// клиентской области формы.
     /// </summary>
     private const int Padding = 20;
 
     /// <summary>
-    /// Радиус (в пикселях), внутри которого кнопка должна
-    /// «убежать» от курсора.
-    /// </summary>
-    private const int TriggerDistancePx = 140;
-
-    /// <summary>
     /// Инициализирует экземпляр <see cref="Form1"/>.
     /// Настраивает минимальный размер формы, подписывается
-    /// на мышиные события и событие изменения размера.
+    /// на мышиные события и событие изменения размера.
     /// </summary>
     public Form1()
     {
@@ -42,15 +30,14 @@ public partial class Form1 : Form
 
         int minClientWidth = runawayButton.Width + Padding * 2;
         int minClientHeight = runawayButton.Height + Padding * 2;
-
         Size chrome = Size - ClientSize;
 
         MinimumSize = new Size(
-            minClientWidth + chrome.Width,
-            minClientHeight + chrome.Height);
+            Math.Max(minClientWidth + chrome.Width, 400),
+            Math.Max(minClientHeight + chrome.Height, 400)
+        );
 
-        MouseMove += HandleMouseMove;
-        runawayButton.MouseMove += HandleMouseMove;
+        runawayButton.MouseEnter += HandleButtonMouseEnter;
 
         runawayButton.Click += (_, _) => Application.Exit();
 
@@ -58,26 +45,13 @@ public partial class Form1 : Form
     }
 
     /// <summary>
-    /// Обработчик движения мыши. Проверяет дистанцию до кнопки и,
-    /// при необходимости, перемещает кнопку в случайное место.
+    /// Обработчик события <see cref="Control.MouseEnter"/>.
+    /// Перемещает кнопку в случайное место внутри формы,
+    /// чтобы она не перекрывала курсор.
     /// </summary>
-    /// <param name="sender">Источник события (форма или кнопка).</param>
-    /// <param name="e">Параметры события <see cref="MouseEventArgs"/>.</param>
-    private void HandleMouseMove(object? sender, MouseEventArgs e)
+    private void HandleButtonMouseEnter(object sender, EventArgs e)
     {
-        Point mouse = e.Location;
-
-        Point center = new(
-            runawayButton.Left + runawayButton.Width / 2,
-            runawayButton.Top + runawayButton.Height / 2);
-
-        // Расстояние между курсором и центром кнопки
-        double distance = Math.Sqrt(Math.Pow(center.X - mouse.X, 2) + Math.Pow(center.Y - mouse.Y, 2));
-
-        if (distance < TriggerDistancePx)
-        {
-            MoveButtonRandomlyInsideForm();
-        }
+        MoveButtonRandomlyInsideForm();
     }
 
     /// <summary>
@@ -109,7 +83,7 @@ public partial class Form1 : Form
 
     /// <summary>
     /// Проверяет, что кнопка остаётся внутри области окна
-    /// после изменения размера формы, и при необходимости
+    /// после изменения размера формы, и при необходимости
     /// передвигает её внутрь.
     /// </summary>
     private void EnsureButtonInsideBounds()

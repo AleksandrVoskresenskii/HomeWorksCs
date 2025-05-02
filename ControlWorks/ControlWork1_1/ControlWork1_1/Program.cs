@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace ControlWork1_1;
+﻿namespace ControlWork1_1;
 
 /// <summary>
 /// Класс‑загрузчик. Настраивает WinForms‑окружение и
