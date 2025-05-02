@@ -1,46 +1,41 @@
-﻿namespace ControlWork1_1
+﻿namespace ControlWork1_1;
+
+/// <summary>
+/// Частичный класс, созданный дизайнером.
+/// Содержит метод <see cref="InitializeComponent"/> для
+/// развёртывания элементов управления.
+/// </summary>
+public partial class Form1
 {
-    partial class Form1
+    /// <summary>
+    /// Кнопка, убегающая от курсора и завершающая приложение по клику.
+    /// </summary>
+    private Button runawayButton = null!;
+
+    /// <summary>
+    /// Метод, вызываемый из конструктора для создания
+    /// и размещения контролов.
+    /// </summary>
+    private void InitializeComponent()
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        this.runawayButton = new Button();
+        this.SuspendLayout();
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            SuspendLayout();
-            // 
-            // Form1
-            // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1087, 680);
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
-            ResumeLayout(false);
-        }
-
-        #endregion
+        this.runawayButton.AutoSize = true;
+        this.runawayButton.Location = new Point(100, 100);
+        this.runawayButton.Name = "runawayButton";
+        this.runawayButton.Size = new Size(120, 30);
+        this.runawayButton.TabIndex = 0;
+        this.runawayButton.Text = "Поймай меня!";
+        this.runawayButton.UseVisualStyleBackColor = true;
+ 
+        this.AutoScaleDimensions = new SizeF(8F, 20F);
+        this.AutoScaleMode = AutoScaleMode.Font;
+        this.ClientSize = new Size(600, 400);
+        this.Controls.Add(this.runawayButton);
+        this.Name = "Form1";
+        this.Text = "Контрольная 1.1 — Убегающая кнопка";
+        this.ResumeLayout(false);
+        this.PerformLayout();
     }
 }
