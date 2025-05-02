@@ -1,0 +1,31 @@
+﻿// MIT License
+// 
+// Copyright (c) 2025 AleksandrVoskresenskii
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction...
+// 
+// Full license text is available in the LICENSE file.
+
+namespace ControlWork1_1;
+
+/// <summary>
+/// Класс‑загрузчик. Настраивает WinForms‑окружение и
+/// показывает главную форму <see cref="Form1"/>.
+/// </summary>
+internal static class Program
+{
+    /// <summary>
+    /// Главный вход в приложение.
+    /// Размечен <see cref="STAThreadAttribute"/>, так как
+    /// WinForms требует однопоточный apartment‑модель COM.
+    /// </summary>
+    [STAThread]
+    private static void Main()
+    {
+
+        ApplicationConfiguration.Initialize();
+        Application.Run(new Form1());
+    }
+}
