@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <!-- Превращаем все предупреждения (включая StyleCop) в ошибки -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- Целевая платформа для всех проектов -->
+    <TargetFramework>net9.0</TargetFramework>
+
+    <!-- Включаем строгий nullable-контекст -->
+    <Nullable>enable</Nullable>
+
+    <!-- Генерировать XML-документацию (файл .xml) -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- Путь к файлу документации в папке сборки -->
+    <!-- Для кросс-платформенности используем Unix- и Windows-пути -->
+    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+</Project>
