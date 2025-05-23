@@ -1,0 +1,46 @@
+name: CI
+
+# Триггеры: при пуше и открытии PR в любую ветку
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    # Можно сменить на matrix, если захотите тестировать на Linux/Windows/macOS
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Клонируем код
+      - uses: actions/checkout@v4
+
+      # 2) Устанавливаем .NET 9 SDK
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      # 3) Кешируем NuGet-пакеты, чтобы ускорить сборки
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      # 4) Восстанавливаем всё
+      - name: dotnet restore
+        run: dotnet restore
+
+      # 5) Сборка с TreatWarningsAsErrors и StyleCop
+      - name: dotnet build
+        run: dotnet build --configuration Release --no-restore --warnaserror
+
+      # 6) Запуск юнит-тестов
+      - name: dotnet test
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      # (Опционально) 7) Code coverage
+      # - name: Report code coverage
+      #   run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
