@@ -3,9 +3,9 @@ name: CI
 # Триггеры: при пуше и открытии PR в любую ветку
 on:
   push:
-    branches: [main]
+    branches: [FinalControlTest]
   pull_request:
-    branches: [main]
+    branches: [FinalControlTest]
 
 jobs:
   build-and-test:
