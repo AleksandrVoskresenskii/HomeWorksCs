@@ -15,5 +15,7 @@
     <!-- Путь к файлу документации в папке сборки -->
     <!-- Для кросс-платформенности используем Unix- и Windows-пути -->
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+
+    <NoWarn>$(NoWarn);SA1633</NoWarn>
   </PropertyGroup>
 </Project>
