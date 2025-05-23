@@ -17,5 +17,7 @@
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
 
     <NoWarn>$(NoWarn);SA1633</NoWarn>
+
+    <NoWarn>$(NoWarn);SA1518;SA1633</NoWarn>
   </PropertyGroup>
 </Project>
