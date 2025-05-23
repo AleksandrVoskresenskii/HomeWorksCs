@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZeroCounter</name>
+    </assembly>
+    <members>
+        <member name="T:ZeroCounter.INullChecker`1">
+            <summary>
+            Определяет правило, по которому элемент считается «нулевым».
+            </summary>
+            <typeparam name="T">Тип элементов списка.</typeparam>
+        </member>
+        <member name="M:ZeroCounter.INullChecker`1.IsNull(`0)">
+            <summary>
+            Проверяет, считается ли <paramref name="value"/> «нулевым» по заданному правилу.
+            </summary>
+            <param name="value">Элемент, который проверяется на «нуль».</param>
+            <returns>
+            <c>true</c>, если <paramref name="value"/> соответствует понятию «нулевого»;
+            иначе <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:ZeroCounter.MyList`1">
+            <summary>
+            Простейший односвязный список с добавлением в конец.
+            </summary>
+            <typeparam name="T">Тип данных.</typeparam>
+        </member>
+        <member name="M:ZeroCounter.MyList`1.AddLast(`0)">
+            <summary>
+            Добавляет значение в конец списка.
+            </summary>
+            <param name="value">Значение, которое добавляется в список.</param>
+        </member>
+        <member name="M:ZeroCounter.MyList`1.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:ZeroCounter.MyList`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:ZeroCounter.ZeroUtils">
+            <summary>
+            Утилиты для работы со списками.
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.ZeroUtils.CountZero``1(ZeroCounter.MyList{``0},ZeroCounter.INullChecker{``0})">
+            <summary>
+            Считает количество «нулевых» элементов в <paramref name="list"/>.
+            </summary>
+            <typeparam name="T">Тип элемента списка.</typeparam>
+            <param name="list">Список, который обходится.</param>
+            <param name="checker">Объект, определяющий «нуль».</param>
+            <returns>Число элементов, распознанных как «нулевые».</returns>
+            <exception cref="T:System.ArgumentNullException">
+            Если <paramref name="list"/> или <paramref name="checker"/> равны <c>null</c>.
+            </exception>
+        </member>
+    </members>
+</doc>

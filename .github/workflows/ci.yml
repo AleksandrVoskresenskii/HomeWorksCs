@@ -1,0 +1,35 @@
+name: CI
+
+# Триггеры: при пуше и открытии PR в любую ветку
+on:
+  push:
+    branches: [FinalControlTest]
+  pull_request:
+    branches: [FinalControlTest]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: dotnet restore
+        run: dotnet restore ./ControlWorks/ZeroCounter.sln
+
+      - name: dotnet build
+        run: dotnet build ./ControlWorks/ZeroCounter.sln --configuration Release --no-restore --warnaserror
+
+      - name: dotnet test
+        run: dotnet test ./ControlWorks/ZeroCounter.sln --configuration Release --no-build --verbosity normal

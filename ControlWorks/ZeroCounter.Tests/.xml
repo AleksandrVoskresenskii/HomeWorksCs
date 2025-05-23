@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZeroCounter.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:ZeroCounter.Tests.MyListTests">
+            <summary>
+            Набор юнит-тестов для <see cref="T:ZeroCounter.MyList`1"/>.
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.MyListTests.NewList_IsEmpty">
+            <summary>
+            Проверяет, что новый список пустой (перечисление ни одного элемента).
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.MyListTests.AddLast_OneElement_ContainsThatElement">
+            <summary>
+            Проверяет, что после одного добавления элемент доступен в перечислении.
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.MyListTests.AddLast_MultipleElements_PreservesOrder">
+            <summary>
+            Проверяет, что добавление нескольких элементов сохраняет порядок.
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.MyListTests.NonGenericEnumerator_Works">
+            <summary>
+            Проверяет, что <see cref="T:System.Collections.IEnumerable"/>-интерфейс корректно работает через non-generic IEnumerator.
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.MyListTests.AddLast_NullableType_AllowsNull">
+            <summary>
+            Проверяет, что список поддерживает nullable-типы и считает null как обычный элемент.
+            </summary>
+        </member>
+        <member name="T:ZeroCounter.Tests.ZeroUtilsTests">
+            <summary>
+            Набор юнит-тестов для <see cref="T:ZeroCounter.ZeroUtils"/>.
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.ZeroUtilsTests.CountZero_Ints_Works">
+            <summary>
+            Проверяет подсчёт «нулевых» элементов для списка целых чисел.
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.ZeroUtilsTests.CountZero_Strings_Works">
+            <summary>
+            Проверяет подсчёт «нулевых» элементов для списка строк (null или пустая строка).
+            </summary>
+        </member>
+        <member name="M:ZeroCounter.Tests.ZeroUtilsTests.Enumerator_Preserves_Order">
+            <summary>
+            Убеждаемся, что перечисление элементов возвращает их в порядке добавления.
+            </summary>
+        </member>
+        <member name="T:ZeroCounter.Tests.ZeroUtilsTests.IntZeroChecker">
+            <summary>
+            Реализация <see cref="T:ZeroCounter.INullChecker`1"/> для целых чисел.
+            </summary>
+        </member>
+        <member name="T:ZeroCounter.Tests.ZeroUtilsTests.EmptyStringChecker">
+            <summary>
+            Реализация <see cref="T:ZeroCounter.INullChecker`1"/> для строк (null или пустая строка).
+            </summary>
+        </member>
+    </members>
+</doc>
